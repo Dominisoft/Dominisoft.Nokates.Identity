@@ -18,10 +18,10 @@ namespace Dominisoft.Nokates.Identity.Controllers
 
         [HttpPost]
         [NoAuth]
-        public ActionResult<string> Authenticate([FromBody] NetworkCredential credentials)
+        public ActionResult<string> Authenticate([FromBody] creds credentials)
         {
-            var password = credentials.Password;
-            var username = credentials.UserName;
+            var password = credentials.EncryptedPassword;
+            var username = credentials.Username;
             var token = _authenticationService.Authenticate(username, password);
             return new JsonResult(token);
         }
@@ -33,5 +33,11 @@ namespace Dominisoft.Nokates.Identity.Controllers
             var key = Request.Headers["AuthorizationKey"];
             return Ok(new { LogOut = true });
         }
+    }
+
+    public class creds
+    {
+        public string Username { get; set; }
+        public string EncryptedPassword { get; set; }
     }
 }

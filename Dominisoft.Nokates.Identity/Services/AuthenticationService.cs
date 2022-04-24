@@ -34,7 +34,7 @@ namespace Dominisoft.Nokates.Identity.Services
             }
 
             var roleIds = user.Roles.Remove("[", "]", "\"").Split(",");
-            var roles = roleIds.Select(role => roleRepo.Get(Convert.ToInt64(role))).ToList();
+            var roles = roleIds.Select(role => roleRepo.Get(Convert.ToInt32(role))).ToList();
 
             var userRoles = new UserRoles
             {

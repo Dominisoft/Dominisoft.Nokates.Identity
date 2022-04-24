@@ -12,8 +12,5 @@ namespace Dominisoft.Nokates.Identity.Controllers
         public RoleController() : base(RepositoryHelper.CreateRepository<Role>())
         { }
 
-        [HttpGet("All")]
-        public List<Role> GetAllRoles()
-            => Repository.GetAll();
     }
 }

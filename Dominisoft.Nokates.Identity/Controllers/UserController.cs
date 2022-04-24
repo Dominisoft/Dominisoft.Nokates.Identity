@@ -12,10 +12,6 @@ namespace Dominisoft.Nokates.Identity.Controllers
     {
         public UserController() : base(RepositoryHelper.CreateRepository<User>())
         { }
-        [HttpGet("All")]
-        public List<User> GetAllUsers()
-        {
-            return Repository.GetAll();
-        }
+
     }
 }
